@@ -103,7 +103,8 @@ def subscribe (client: mqtt_client, topik):
         
         print("Menerima topik", msg.topic, "dengan nilai", data)
         
-        logger.append([aksi, topik, data])
+        logger.append([dt_string, broker, port, client_id, aksi, topik, data])
+
                
         if msg.topic == "pcr/puja/huruf/1":
             pesan = msg.payload.decode("utf-8")
@@ -990,7 +991,7 @@ def simpan(client, topik):
         pesan = "none"
         
         berlangganan.append(topik)
-        logger.append([aksi, topik, pesan])
+        logger.append([dt_string, broker, port, client_id, aksi, topik, pesan])
         
         print("")
         print("Berhasil berlangganan topik", topik)
@@ -1009,7 +1010,7 @@ def simpan(client, topik):
 def unduh(client):
     with open(file_name, 'w', newline='') as csv_file:
         writer = csv.writer(csv_file)
-        writer.writerow(['Aksi', 'Topik', 'Pesan'])
+        writer.writerow(['Datetime', 'Broker', 'Port', 'ID Client', 'Aksi', 'Topik', 'Pesan'])
         writer.writerows(logger)
         
         if writer:

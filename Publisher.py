@@ -69,7 +69,7 @@ def publish(client, topik, pesan):
     if status == 0:
         aksi = "mengirim"
         
-        logger.append([aksi, topik, pesan])
+        logger.append([dt_string, broker, port, client_id, aksi, topik, pesan])
         
         print("")
         print("Mengirimkan", pesan, "ke topik", topik)
@@ -80,7 +80,7 @@ def publish(client, topik, pesan):
     else:
         aksi = "gagal mengirim"
         
-        logger.append([aksi, topik, pesan])
+        logger.append([dt_string, broker, port, client_id, aksi, topik, pesan])
         
         print("")
         print("Gagal mengirimkan", pesan, "ke topik", topik)
@@ -96,7 +96,7 @@ def publish1(client, topik, pesan):
     if status == 0:
         aksi = "mengirim"
         
-        logger.append([aksi, topik, pesan])
+        logger.append([dt_string, broker, port, client_id, aksi, topik, pesan])
         
         print("")
         print("Mengirimkan", pesan, "ke topik", topik)
@@ -107,7 +107,7 @@ def publish1(client, topik, pesan):
     else:
         aksi = "gagal mengirim"
         
-        logger.append([aksi, topik, pesan])
+        logger.append([dt_string, broker, port, client_id, aksi, topik, pesan])
         
         print("")
         print("Gagal mengirimkan", pesan, "ke topik", topik)
@@ -123,7 +123,7 @@ def publish2(client, topik, pesan, pilihan_menu):
     if status == 0:
         aksi = "mengirim"
         
-        logger.append([aksi, topik, pesan])
+        logger.append([dt_string, broker, port, client_id, aksi, topik, pesan])
         
         print("")
         print("Mengirimkan", pesan, "ke topik", topik)
@@ -139,7 +139,7 @@ def publish2(client, topik, pesan, pilihan_menu):
     else:
         aksi = "gagal mengirim"
         
-        logger.append([aksi, topik, pesan])
+        logger.append([dt_string, broker, port, client_id, aksi, topik, pesan])
         
         print("")
         print("Gagal mengirimkan", pesan, "ke topik", topik)
@@ -151,7 +151,7 @@ def publish2(client, topik, pesan, pilihan_menu):
 def unduh(client):
     with open(file_name, 'w', newline='') as csv_file:
         writer = csv.writer(csv_file)
-        writer.writerow(['Aksi', 'Topik', 'Pesan'])
+        writer.writerow(['Datetime', 'Broker', 'Port', 'ID Client', 'Aksi', 'Topik', 'Pesan'])
         writer.writerows(logger)
         
         if writer:
