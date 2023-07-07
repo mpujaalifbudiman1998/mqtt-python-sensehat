@@ -97,7 +97,14 @@ def connect_mqtt(broker, port, client_id, keepalive):
     return client
     
 def subscribe (client: mqtt_client, topik):    
-    def on_message(client, userdata, msg):        
+    def on_message(client, userdata, msg): 
+        aksi = "menerima"
+        data = str(msg.payload)
+        
+        print("Menerima topik", msg.topic, "dengan nilai", data)
+        
+        logger.append([aksi, topik, data])
+               
         if msg.topic == "pcr/puja/huruf/1":
             pesan = msg.payload.decode("utf-8")
             
@@ -712,11 +719,6 @@ def subscribe (client: mqtt_client, topik):
     
         if msg.topic == "pcr/puja/bersihkan":
             sense.clear()
-        
-        aksi = "menerima"
-        data = str(msg.payload)
-        
-        logger.append([aksi, topik, data])
         
     client.subscribe(topik)
     client.on_message = on_message
