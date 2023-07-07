@@ -17,12 +17,12 @@ sense = SenseHat()
 # broker = "broker.emqx.io"
 # port = 1883
 # client_id = "puja_subscriber"
-# keepalive = 300
+# keepalive = 3600
 
 broker = ""
 port = ""
 client_id = ""
-keepalive = 3600
+keepalive = ""
 
 now = datetime.now()
 dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
@@ -74,6 +74,7 @@ def run():
     broker = input("Broker : ")
     port = int(input("Port : "))
     client_id = input("Client ID : ")
+    keepalive = int(input("Keepalive : "))
     
     client = connect_mqtt(broker, port, client_id, keepalive)
     
