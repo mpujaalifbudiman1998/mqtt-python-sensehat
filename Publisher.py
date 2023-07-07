@@ -521,7 +521,7 @@ def mqttTopic4(client, pilihan_menu, pilihan_submenu):
             gambar_indonesia(client, pilihan_menu, pilihan_submenu)
             time.sleep(1)
         
-            gambar_sedih(client, pilihan_menu, pilihan_submenu)
+            gambar_pelangi(client, pilihan_menu, pilihan_submenu)
             time.sleep(1)
             
             gambar_heart(client, pilihan_menu, pilihan_submenu)
