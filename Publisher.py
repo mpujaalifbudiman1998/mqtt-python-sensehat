@@ -542,7 +542,7 @@ def mqttTopic5(client, pilihan_menu, pilihan_submenu):
     
     def animasi_heartbreak(client, pilihan_menu, pilihan_submenu):
         topik = "pcr/puja/animasi/heartbreak"
-        pesan = "Animasi heartbeat"
+        pesan = "Animasi heartbreak"
         
         if pilihan_submenu == 99:
             publish1(client, topik, pesan)
