@@ -24,12 +24,7 @@ port = ""
 client_id = ""
 keepalive = ""
 
-now = datetime.now()
-dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
-
 logger = []
-file_logger = " subscriber.csv"
-file_name = str(dt_string) + str(file_logger)
 
 berlangganan = []
 berlangganan2 = [
@@ -99,6 +94,8 @@ def connect_mqtt(broker, port, client_id, keepalive):
     
 def subscribe (client: mqtt_client, topik):    
     def on_message(client, userdata, msg): 
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
         aksi = "menerima"
         data = str(msg.payload)
         
@@ -106,7 +103,6 @@ def subscribe (client: mqtt_client, topik):
         
         logger.append([dt_string, broker, port, client_id, aksi, topik, data])
 
-               
         if msg.topic == "pcr/puja/huruf/1":
             pesan = msg.payload.decode("utf-8")
             
@@ -726,6 +722,9 @@ def subscribe (client: mqtt_client, topik):
     client.on_message = on_message
     
 def menu(client):
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+    
     print("")
     print("Selamat Datang di Proyek UAS")
     print(dt_string)
@@ -751,6 +750,9 @@ def menu(client):
 
 def submenu(client, pilihan_menu):
     if pilihan_menu == 1:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -776,6 +778,9 @@ def submenu(client, pilihan_menu):
         cek(client, pilihan_menu, pilihan_submenu)
         
     if pilihan_menu == 3:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -793,6 +798,9 @@ def submenu(client, pilihan_menu):
         cek(client, pilihan_menu, pilihan_submenu)
     
     if pilihan_menu == 4:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -811,6 +819,9 @@ def submenu(client, pilihan_menu):
         cek(client, pilihan_menu, pilihan_submenu)
     
     if pilihan_menu == 5:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -828,6 +839,9 @@ def submenu(client, pilihan_menu):
         cek(client, pilihan_menu, pilihan_submenu)
         
     if pilihan_menu == 6:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -844,6 +858,9 @@ def submenu(client, pilihan_menu):
         cek(client, pilihan_menu, pilihan_submenu)
     
     if pilihan_menu == 7:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -987,7 +1004,9 @@ def cek(client, pilihan_menu, pilihan_submenu):
     simpan(client, topik)
         
 def simpan(client, topik):
-    if topik not in berlangganan:        
+    if topik not in berlangganan:   
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")     
         aksi = "berlangganan"
         pesan = "none"
         
@@ -1009,6 +1028,12 @@ def simpan(client, topik):
         menu(client)
 
 def unduh(client):
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+
+    file_logger = " subscriber.csv"
+    file_name = str(dt_string) + str(file_logger)
+    
     with open(file_name, 'w', newline='') as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow(['Datetime', 'Broker', 'Port', 'ID Client', 'Aksi', 'Topik', 'Pesan'])

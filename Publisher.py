@@ -24,12 +24,7 @@ port = ""
 client_id = ""
 keepalive = ""
 
-now = datetime.now()
-dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
-
 logger = []
-file_logger = " publisher.csv"
-file_name = str(dt_string) + str(file_logger)
     
 def run():
     print("Nama : M. Puja Alif Budiman")
@@ -67,6 +62,9 @@ def publish(client, topik, pesan):
     kirim = client.publish(topik, pesan)
     status = kirim[0]
     
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+    
     if status == 0:
         aksi = "mengirim"
         
@@ -94,6 +92,9 @@ def publish1(client, topik, pesan):
     kirim = client.publish(topik, pesan)
     status = kirim[0]
     
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+    
     if status == 0:
         aksi = "mengirim"
         
@@ -120,6 +121,9 @@ def publish1(client, topik, pesan):
 def publish2(client, topik, pesan, pilihan_menu):
     kirim = client.publish(topik, pesan)
     status = kirim[0]
+    
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
     
     if status == 0:
         aksi = "mengirim"
@@ -150,6 +154,12 @@ def publish2(client, topik, pesan, pilihan_menu):
         menu(client)
 
 def unduh(client):
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+
+    file_logger = " publisher.csv"
+    file_name = str(dt_string) + str(file_logger)
+    
     with open(file_name, 'w', newline='') as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow(['Datetime', 'Broker', 'Port', 'ID Client', 'Aksi', 'Topik', 'Pesan'])
@@ -171,6 +181,9 @@ def unduh(client):
             menu(client)
 
 def menu(client):
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+    
     print("")
     print("Selamat Datang di Proyek UAS")
     print(dt_string)
@@ -192,6 +205,9 @@ def menu(client):
 
 def submenu(client, pilihan_menu):
     if pilihan_menu == 1:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -214,6 +230,9 @@ def submenu(client, pilihan_menu):
         mqttTopic2(client, pilihan_menu)
         
     if pilihan_menu == 3:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -232,6 +251,9 @@ def submenu(client, pilihan_menu):
         mqttTopic3(client, pilihan_menu, pilihan_submenu)
     
     if pilihan_menu == 4:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -251,6 +273,9 @@ def submenu(client, pilihan_menu):
         mqttTopic4(client, pilihan_menu, pilihan_submenu)
     
     if pilihan_menu == 5:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -269,6 +294,9 @@ def submenu(client, pilihan_menu):
         mqttTopic5(client, pilihan_menu, pilihan_submenu)
     
     if pilihan_menu == 6:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
@@ -286,6 +314,9 @@ def submenu(client, pilihan_menu):
         mqttTopic6(client, pilihan_menu, pilihan_submenu)
     
     if pilihan_menu == 7:
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y %H:%M:%S")
+        
         print("")
         print("Selamat Datang di Proyek UAS")
         print(dt_string)
