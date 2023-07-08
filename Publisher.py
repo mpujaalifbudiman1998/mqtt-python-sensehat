@@ -19,11 +19,6 @@ sense = SenseHat()
 # client_id = "puja_publisher"
 # keepalive = 3600
 
-broker = ""
-port = ""
-client_id = ""
-keepalive = ""
-
 logger = []
     
 def run():
@@ -32,6 +27,8 @@ def run():
     print("Kelas : 22-MTTK-B")
     print("Mata Kuliah : MT501 - Advanced Programming")
     print("")
+    
+    global broker, port, client_id, keepalive
     
     print("Data broker MQTT")
     broker = input("Broker : ")
@@ -171,6 +168,7 @@ def unduh(client):
             print("Harap tunggu, anda akan kembali ke menu dalam 3 detik!")
             
             time.sleep(3)
+            csv_file.close()
             menu(client)
         else:
             print("")

@@ -19,11 +19,6 @@ sense = SenseHat()
 # client_id = "puja_subscriber"
 # keepalive = 3600
 
-broker = ""
-port = ""
-client_id = ""
-keepalive = ""
-
 logger = []
 
 berlangganan = []
@@ -64,6 +59,8 @@ def run():
     print("Kelas : 22-MTTK-B")
     print("Mata Kuliah : MT501 - Advanced Programming")
     print("")
+    
+    global broker, port, client_id, keepalive
     
     print("Data broker MQTT")
     broker = input("Broker : ")
@@ -717,6 +714,9 @@ def subscribe (client: mqtt_client, topik):
     
         if msg.topic == "pcr/puja/bersihkan":
             sense.clear()
+            
+        time.sleep(3)
+        sense.clear()
         
     client.subscribe(topik)
     client.on_message = on_message
@@ -1045,6 +1045,7 @@ def unduh(client):
             print("Harap tunggu, anda akan kembali ke menu dalam 3 detik!")
             
             time.sleep(3)
+            csv_file.close()
             menu(client)
         else:
             print("")
@@ -1055,6 +1056,9 @@ def unduh(client):
             menu(client)
         
 def eksekusi(client):
+    print("")
+    print("Langganan : ", berlangganan)
+    
     for langganan in berlangganan:
         topik = langganan
         subscribe(client, topik)
@@ -1062,6 +1066,9 @@ def eksekusi(client):
     client.loop_forever()
     
 def eksekusi1(client):
+    print("")
+    print("Langganan : ", berlangganan2)
+    
     for langganan in berlangganan2:
         topik = langganan
         subscribe(client, topik)
