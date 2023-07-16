@@ -259,9 +259,10 @@ def submenu(client, pilihan_menu):
         print("")
         print("1. Senyum")
         print("2. Sedih")
-        print("3. Indonesia")
-        print("4. Pelangi")
-        print("5. Heart")
+        print("3. Tertawa")
+        print("4. Indonesia")
+        print("5. Pelangi")
+        print("6. Heart")
         print("99. Tampilkan Semua")
         print("0. Menu")
         print("")
@@ -499,6 +500,15 @@ def mqttTopic4(client, pilihan_menu, pilihan_submenu):
             publish1(client, topik, pesan)
         else: 
             publish(client, topik, pesan)
+            
+    def gambar_tertawa(client, pilihan_menu, pilihan_submenu):
+        topik = "pcr/puja/gambar/tertawa"
+        pesan = "Gambar tertawa"
+        
+        if pilihan_submenu == 99:
+            publish1(client, topik, pesan)
+        else: 
+            publish(client, topik, pesan)
     
     def gambar_indonesia(client, pilihan_menu, pilihan_submenu):
         topik = "pcr/puja/gambar/indonesia"
@@ -532,12 +542,15 @@ def mqttTopic4(client, pilihan_menu, pilihan_submenu):
             gambar_sedih(client, pilihan_menu, pilihan_submenu)
         
         if pilihan_submenu == 3:
+            gambar_tertawa(client, pilihan_menu, pilihan_submenu)
+        
+        if pilihan_submenu == 4:
             gambar_indonesia(client, pilihan_menu, pilihan_submenu)
             
-        if pilihan_submenu == 4:
+        if pilihan_submenu == 5:
             gambar_pelangi(client, pilihan_menu, pilihan_submenu)
         
-        if pilihan_submenu == 5:
+        if pilihan_submenu == 6:
             gambar_heart(client, pilihan_menu, pilihan_submenu)
         
         if pilihan_submenu == 99:

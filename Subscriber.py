@@ -35,6 +35,7 @@ berlangganan2 = [
     "pcr/puja/lampu/mati",
     "pcr/puja/gambar/senyum",
     "pcr/puja/gambar/sedih",
+    "pcr/puja/gambar/tertawa",
     "pcr/puja/gambar/indonesia",
     "pcr/puja/gambar/pelangi",
     "pcr/puja/gambar/heart",
@@ -342,6 +343,23 @@ def subscribe (client: mqtt_client, topik):
                 b, y, y, y, y, y, y, b
             ]
 
+            sense.set_pixels(image)
+        
+        if msg.topic == "pcr/puja/gambar/tertawa":
+            m = (128, 0, 0)
+            y = (255, 255, 0)
+            b = (0, 0, 0)
+
+            image = [
+                b, y, y, y, y, y, y, b,
+                y, m, y, y, y, y, m, y,
+                y, y, m, y, y, m, y, y,
+                y, m, y, y, y, y, m, y,
+                y, y, y, y, y, y, y, y,
+                y, m, m, m, m, m, m, y,
+                y, y, m, m, m, m, y, y,
+                b, y, y, y, y, y, y, b
+]
             sense.set_pixels(image)
             
         if msg.topic == "pcr/puja/gambar/indonesia":
@@ -808,9 +826,10 @@ def submenu(client, pilihan_menu):
         print("")
         print("1. Senyum")
         print("2. Sedih")
-        print("3. Indonesia")
-        print("4. Pelangi")
-        print("5. Heart")
+        print("3. Tertawa")
+        print("4. Indonesia")
+        print("5. Pelangi")
+        print("6. Heart")
         print("0. Menu")
         print("")
         
@@ -937,14 +956,17 @@ def cek(client, pilihan_menu, pilihan_submenu):
             
         if pilihan_submenu == 2:
             topik = "pcr/puja/gambar/sedih"
-        
+            
         if pilihan_submenu == 3:
-            topik = "pcr/puja/gambar/indonesia"
+            topik = "pcr/puja/gambar/tertawa"
         
         if pilihan_submenu == 4:
-            topik = "pcr/puja/gambar/pelangi"
+            topik = "pcr/puja/gambar/indonesia"
         
         if pilihan_submenu == 5:
+            topik = "pcr/puja/gambar/pelangi"
+        
+        if pilihan_submenu == 6:
             topik = "pcr/puja/gambar/heart"
             
         if pilihan_submenu == 0:
