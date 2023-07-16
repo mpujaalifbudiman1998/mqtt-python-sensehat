@@ -560,6 +560,9 @@ def mqttTopic4(client, pilihan_menu, pilihan_submenu):
             gambar_sedih(client, pilihan_menu, pilihan_submenu)
             time.sleep(1)
             
+            gambar_tertawa(client, pilihan_menu, pilihan_submenu)
+            time.sleep(1)
+            
             gambar_indonesia(client, pilihan_menu, pilihan_submenu)
             time.sleep(1)
         
